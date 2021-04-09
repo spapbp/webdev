@@ -58,5 +58,5 @@ function display(number){
 
 function fill_array(number){
     let imgage_address;
-    for(let i = 0; i < number; i )
+    for(let i = 0; i < number; i++)
 }
