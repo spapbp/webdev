@@ -23,7 +23,9 @@ function display(number){
     let table_row;
     let table_cell;
     let count = 0;
+    var image_array = [];
 
+    fill_array(number);
     if(number == 8){
         row_count = 2;
         col_count = 4;
@@ -40,8 +42,8 @@ function display(number){
     let table = document.querySelector("table");
     
     for(let i = 0; i < row_count; i++){
-
         table_row = table.insertRow();
+
         for(let j = 0; j < col_count; j++){
             if(count >= number){
                 break;
@@ -52,4 +54,9 @@ function display(number){
             count++;
         }
     }
+}
+
+function fill_array(number){
+    let imgage_address;
+    for(let i = 0; i < number; i )
 }
