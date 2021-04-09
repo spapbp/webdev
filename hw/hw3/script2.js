@@ -1,7 +1,8 @@
+var image_array = [];
+
 function game(){
     let amount;
     let diff;
-   // let table = document.querySelector("table");
     
     amount = prompt("How many imgages 8, 10, 12?");
     diff = prompt("How long to memorize 3, 5, 8?");
@@ -23,9 +24,9 @@ function display(number){
     let table_row;
     let table_cell;
     let count = 0;
-    var image_array = [];
-
+    let table = document.querySelector("table");
     fill_array(number);
+
     if(number == 8){
         row_count = 2;
         col_count = 4;
@@ -38,9 +39,7 @@ function display(number){
         row_count = 3;
         col_count = 4;
     }
-
-    let table = document.querySelector("table");
-    
+    //fill table with images from fill_array    
     for(let i = 0; i < row_count; i++){
         table_row = table.insertRow();
 
@@ -49,14 +48,23 @@ function display(number){
                 break;
             }
             table_cell = table_row.insertCell();
-            text = document.createTextNode("TEST");
-            table_cell.appendChild(text);
+            img = document.createElement("IMG");
+            img.setAttribute("src", image_array[count].src);
+            img.setAttribute("width", "80%");
+            table_cell.appendChild(img);
             count++;
         }
     }
 }
 
+//fill array with images from images folder
 function fill_array(number){
-    let imgage_address;
-    for(let i = 0; i < number; i )
+    let image;
+    for(let i = 0; i < number/2; i++){
+        image = new Image();
+        image.src = "images/image (" + i + ").jpg";
+        image_array.push(image);
+        image_array.push(image);
+    }
+    image_array = image_array.sort(() => Math.random() - 0.5);
 }
