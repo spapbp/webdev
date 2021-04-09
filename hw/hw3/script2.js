@@ -1,23 +1,29 @@
 var image_array = [];
+var click_array = [];
+var matches_count = 0;
 
+function start(){
+    game();
+}
 function game(){
     let amount;
     let diff;
+    let time;
     
     amount = prompt("How many imgages 8, 10, 12?");
     diff = prompt("How long to memorize 3, 5, 8?");
-
     if(amount == 8){
+        time = 120000
         display(8);
     }
     else if(amount == 10){
+        time = 150000
         display(10);
     }
     else if(amount == 12){
+        time = 180000;
         display(12);
     }
-
-    match();
 }
 
 function display(number){
@@ -53,6 +59,7 @@ function display(number){
             let img = document.createElement("IMG");
             img.setAttribute("src", image_array[count].src);
             img.setAttribute("class", "card");
+            //img.setAttribute("onclick", match_check(image_array[count].src, number));
             table_cell.appendChild(img);
             count++;
         }
@@ -60,6 +67,7 @@ function display(number){
     //add listeners
     document.querySelectorAll(".card").forEach(card => card.addEventListener("click", () =>{
             card.classList.add("flip")}));
+    document.querySelectorAll(".card").forEach(card => card.addEventListener("click", function() {match_check(card, number)}));
     
 }
 
@@ -75,6 +83,26 @@ function fill_array(number){
     image_array = image_array.sort(() => Math.random() - 0.5);
 }
 
-function match(){
+//check if selected cards match
+function match_check(card, number){
 
+    click_array.push(card.src);
+
+    if(click_array.length == 2){
+        if(click_array[0] == click_array[1]){
+            matches_count += 1;
+            click_array = [];
+        }
+        else{
+            click_array = [];
+        }
+    }
+
+    console.log(click_array.toString());
+    console.log(matches_count);
+
+
+    if(matches_count == number/2){
+        alert("Done");
+    }
 }

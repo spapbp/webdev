@@ -2,10 +2,15 @@
 .flip{
     transform: rotateY(180deg);
     transform-style: preserve-3d;
+    animation-name: spin;
 
     
 }
 
 .card{
     width:100%;
+    transform-style: preserve-3d;
+    animation-name: spin;
+
+
 }
