@@ -16,6 +16,8 @@ function game(){
     else if(amount == 12){
         display(12);
     }
+
+    match();
 }
 
 function display(number){
@@ -48,21 +50,21 @@ function display(number){
                 break;
             }
             table_cell = table_row.insertCell();
-            img = document.createElement("IMG");
+            let img = document.createElement("IMG");
             img.setAttribute("src", image_array[count].src);
-            img.setAttribute("width", "80%");
+            img.setAttribute("class", "card");
             table_cell.appendChild(img);
             count++;
         }
     }
+    //add listeners
+    document.querySelectorAll(".card").forEach(card => card.addEventListener("click", () =>{
+            card.classList.add("flip")}));
+    
 }
 
 //fill array with images from images folder
 function fill_array(number){
-<<<<<<< HEAD
-    let imgage_address;
-    for(let i = 0; i < number; i++)
-=======
     let image;
     for(let i = 0; i < number/2; i++){
         image = new Image();
@@ -71,5 +73,8 @@ function fill_array(number){
         image_array.push(image);
     }
     image_array = image_array.sort(() => Math.random() - 0.5);
->>>>>>> 4bb9a7e2ddccf683e0f576ea8ad18b2d1d056cfe
+}
+
+function match(){
+
 }
