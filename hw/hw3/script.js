@@ -1,7 +1,6 @@
 function getHours(){
     let hours = 0;
     let table = document.querySelector("table");
-    let thead = table.createTHead();
     let row;
     let text;
     let pay;
