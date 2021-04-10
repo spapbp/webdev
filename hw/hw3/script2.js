@@ -33,6 +33,7 @@ function display(number){
     let table_cell;
     let count = 0;
     let table = document.querySelector("table");
+    match = 0;
     fill_array(number);
 
     if(number == 8){
@@ -59,15 +60,17 @@ function display(number){
             let img = document.createElement("IMG");
             img.setAttribute("src", image_array[count].src);
             img.setAttribute("class", "card");
-            //img.setAttribute("onclick", match_check(image_array[count].src, number));
+
+            let back = document.createElement("DIV");
+            back.setAttribute("class", "flip");
+            table_cell.appendChild(back);
             table_cell.appendChild(img);
             count++;
         }
     }
     //add listeners
-    document.querySelectorAll(".card").forEach(card => card.addEventListener("click", () =>{
-            card.classList.add("flip")}));
-    document.querySelectorAll(".card").forEach(card => card.addEventListener("click", function() {match_check(card, number)}));
+    document.querySelectorAll(".card").forEach(card => card.addEventListener("click", () => {card.classList.add("flip")}));
+    document.querySelectorAll(".card").forEach(card => card.addEventListener("click", () => {match_check(card, number)}));
     
 }
 
@@ -92,11 +95,18 @@ function match_check(card, number){
         if(click_array[0] == click_array[1]){
             matches_count += 1;
             click_array = [];
+            document.querySelectorAll(".flip").forEach(card => card.classList.add("matched"));
         }
         else{
             click_array = [];
+            //setTimeout(function(){document.querySelectorAll(".flip").forEach(card => card.classList.remove("flip"))}, 500);
         }
+
+       // setTimeout(function(){document.querySelectorAll(".flip").forEach(card => card.classList.remove("flip"))}, 1000);
+
     }
+
+
 
     console.log(click_array.toString());
     console.log(matches_count);

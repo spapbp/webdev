@@ -2,7 +2,9 @@
 .flip{
     transform: rotateY(180deg);
     transform-style: preserve-3d;
-    animation-name: spin;
+    backface-visibility:hidden;
+    background-color: red;
+
 
     
 }
@@ -10,7 +12,12 @@
 .card{
     width:100%;
     transform-style: preserve-3d;
-    animation-name: spin;
+    backface-visibility:hidden;
+}
 
+.matched{
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+    backface-visibility:hidden;
 
 }
